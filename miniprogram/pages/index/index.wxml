@@ -1,0 +1,21 @@
+<!--index.wxml-->
+<view class="container">
+
+  <!-- 上传图片 -->
+  <view class="uploader">
+    <view class="uploader-text" bindtap="doUpload">
+      <text>上传图片</text>
+    </view>
+    <view class="uploader-container" wx:if="{{imgUrl}}">
+      <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+    </view>
+  </view>
+
+
+  <!-- 日历 -->
+  <view class="calendar">
+    <calendar show-more-days="false" weeks-type="cn" cell-size="36" lunar="true" bindnextMonth="onNextMonth" bindprevMonth="onPrevMonth" binddateChange="onDateChange" binddayClick="onDayClick"></calendar>
+  </view>
+
+ 
+</view>
