@@ -7,7 +7,12 @@ Page({
         userInfo: {},
         logged: false,
         takeSession: false,
-        requestResult: ''
+        requestResult: '',
+
+        year: new Date().getFullYear(),      // 年份
+        month: new Date().getMonth() + 1,    // 月份
+        day: new Date().getDate(),
+        days_color: []
     },
 
     onLoad: function() {
@@ -29,6 +34,37 @@ Page({
                 }
             }
         })
+
+        const days_count = new Date(this.data.year, this.data.month, 0).getDate();
+        console.log(days_count);
+        let demo5_days_style = new Array;
+        for (let i = 1; i <= days_count; i++) {
+            const date = new Date(this.data.year, this.data.month - 1, i);
+            if (date.getDay() == 0) {
+                demo5_days_style.push({
+                    month: 'current', day: i, color: '#f488cd'
+                });
+            } else {
+                demo5_days_style.push({
+                    month: 'current', day: i, color: '#a18ada'
+                });
+            }
+        }
+        demo5_days_style.push({ month: 'current', day: 12, color: 'white', background: '#b49eeb' });
+        demo5_days_style.push({ month: 'current', day: 17, color: 'white', background: '#f5a8f0' });
+        demo5_days_style.push({ month: 'current', day: 20, color: 'white', background: '#aad4f5' });
+        demo5_days_style.push({ month: 'current', day: 25, color: 'white', background: '#84e7d0' });
+
+        let tmp = new Array;
+        tmp.push({
+            month: 'current',
+            day: 12,
+            color: "white",
+            background: '#b49eeb'
+        })
+        this.setData({
+            days_color: demo5_days_style
+        });
     },
 
     onGetUserInfo: function(e) {
@@ -126,6 +162,14 @@ Page({
 
     onDayClick: function (event) {
         console.log(event.detail)
+        this.setData({
+            days_color: [{
+                month: 'current',
+                day: event.detail.day,
+                color: `white`,
+                background: `#007aff`
+            }]
+        })
     }
 
 })

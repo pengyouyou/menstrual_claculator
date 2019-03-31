@@ -2,20 +2,41 @@
 <view class="container">
 
   <!-- 上传图片 -->
-  <view class="uploader">
+  <!-- <view class="uploader">
     <view class="uploader-text" bindtap="doUpload">
       <text>上传图片</text>
     </view>
     <view class="uploader-container" wx:if="{{imgUrl}}">
       <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
     </view>
-  </view>
+  </view> -->
 
 
   <!-- 日历 -->
   <view class="calendar">
-    <calendar show-more-days="false" weeks-type="cn" cell-size="36" lunar="true" bindnextMonth="onNextMonth" bindprevMonth="onPrevMonth" binddateChange="onDateChange" binddayClick="onDayClick"></calendar>
+    <!-- <calendar show-more-days="false" weeks-type="cn" cell-size="36" active-type="rounded" days-color="{{days_color}}" bindnextMonth="onNextMonth" bindprevMonth="onPrevMonth" binddateChange="onDateChange" binddayClick="onDayClick"></calendar> -->
+
+    <view class="demo5">
+        <calendar        
+        active-type="square"
+        cell-size="40" 
+        weeks-type="cn"
+        show-more-days="{{true}}"
+        calendar-style="demo5-calendar" 
+        header-style="demo5-header" 
+        board-style="demo5-board" 
+        days-color="{{days_color}}" 
+        binddayClick="onDayClick"
+        />
+
+        <view class="flex-wrp" style="flex-direction:row;">
+          <view class="flex-item demo-text-1"></view>
+          <view class="flex-item demo-text-2"></view>
+          <view class="flex-item demo-text-3"></view>
+        </view>
+    </view>
   </view>
+
 
  
 </view>

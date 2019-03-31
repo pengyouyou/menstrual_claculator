@@ -138,10 +138,88 @@ page {
 
 .calendar {
   width: 100%;
-  padding: 20rpx 20rpx 20rpx 0;
+  /* padding: 20rpx 20rpx 20rpx 0; */
   display: flex;
   align-content: center;
   justify-content: center;
   box-sizing: border-box;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.demo5 {
+    padding: 15rpx;
+}
+
+.demo5-calendar {
+    background-color: white;
+    padding: 10rpx;
+    border-radius: 15rpx;
+}
+
+.demo5-header {
+    font-size: large;
+    color: #59518d;    
+}
+
+.demo5-board {
+    color: #c7cbe2;
+    font-weight: bold;
+}
+
+.flex-wrp{
+  margin-top: 60rpx;
+  display:flex;
+}
+.flex-item{
+  width: 30rpx;
+  height: 30rpx;
+  font-size: 20rpx;
+  margin-right: 150rpx;
+  border-radius: 15rpx;
+}
+
+
+.demo-text-1{
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background-color: #1AAD19;
+  color: #353535;
+}
+.demo-text-1:before{
+  content: '安全期';
+  position: absolute;
+  top: 50%;
+  left: 110%;
+  /* transform: translate(-50%, -50%); */
+  box-sizing: border-box;
+  border-top: 1px solid rgba(0, 0, 0, 1);
+}
+.demo-text-2{
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background-color: #2782D7;
+  color: #353535;
+}
+.demo-text-2:before{
+  content: '危险期';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.demo-text-3{
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  background-color: #F1F1F1;
+  color: #353535;
+}
+.demo-text-3:before{
+  content: '排卵日';
+  position: absolute;
+  top: 50%;
+  left: 110%;
+  transform: translate(-50%, -50%);
 }
