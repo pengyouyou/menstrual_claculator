@@ -7,7 +7,25 @@ Page({
         userInfo: {},
         logged: false,
         takeSession: false,
-        requestResult: ''
+        requestResult: '',
+
+		info: [{
+				color: "green",
+				desc: "安全期"
+			},
+			{
+				color: "yellow",
+				desc: "危险期"
+			},
+			{
+				color: "orange",
+				desc: "排卵日"
+			},
+			{
+				color: "red",
+				desc: "月经期"
+			}
+		]
     },
 
     onLoad: function() {

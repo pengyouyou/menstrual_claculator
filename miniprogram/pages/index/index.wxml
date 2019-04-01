@@ -1,21 +1,32 @@
 <!--index.wxml-->
 <view class="container">
 
-  <!-- 上传图片 -->
-  <view class="uploader">
+    <!-- 上传图片 -->
+    <!-- <view class="uploader">
     <view class="uploader-text" bindtap="doUpload">
       <text>上传图片</text>
     </view>
     <view class="uploader-container" wx:if="{{imgUrl}}">
       <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
     </view>
-  </view>
+  </view> -->
 
 
-  <!-- 日历 -->
-  <view class="calendar">
-    <calendar show-more-days="false" weeks-type="cn" cell-size="36" lunar="true" bindnextMonth="onNextMonth" bindprevMonth="onPrevMonth" binddateChange="onDateChange" binddayClick="onDayClick"></calendar>
-  </view>
+    <view class="container-border">
+        <!-- 日历 -->
+        <view class="calendar">
+            <calendar show-more-days="{{false}}" weeks-type="cn" cell-size="44" lunar="{{false}}" bindnextMonth="onNextMonth" bindprevMonth="onPrevMonth" binddateChange="onDateChange" binddayClick="onDayClick"></calendar>
+        </view>
 
- 
+        <view class="flex-wrp" style="flex-direction:row;">
+            <block wx:for-items="{{info}}" wx:for-item="infoitem" wx:key="key">
+                <view class="flex-item-container">
+                    <view class="item-dot" style="background-color: {{infoitem.color}}"></view>
+                    <text class="item-text">{{infoitem.desc}}</text>
+                </view>
+            </block>
+        </view>
+    </view>
+
+    <button class="setting-button" bindtap="onSetting">设置</button>
 </view>

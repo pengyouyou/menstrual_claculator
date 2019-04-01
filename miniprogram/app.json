@@ -9,9 +9,9 @@
         "pages/chooseLib/chooseLib"
     ],
     "window": {
-        "backgroundColor": "#F8F8F8",
+        "backgroundColor": "#FFCCCC",
         "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#F8F8F8",
+        "navigationBarBackgroundColor": "#FFCCCC",
         "navigationBarTitleText": "云开发 QuickStart",
         "navigationBarTextStyle": "black"
     },
