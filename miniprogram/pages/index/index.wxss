@@ -143,23 +143,24 @@ page {
   align-content: center;
   justify-content: center;
   box-sizing: border-box;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.flex-item{
-  width: 100rpx;
-  height: 100rpx;
-  border-radius: 50%;
-  /* background-size: cover; */
-  background-color: red;
-	color: #000000;
-	font-size: 22rpx;
-	padding: 1rpx;
-  /* box-sizing: content-box;
-  border: 1rpx solid rgba(0, 0, 0, 0.8); */
+.calendar-style {
+    /* background-color: #eeedff; */
+    /* padding-top: 10px; */
+	width: 650rpx;
 }
 
-
+.calendar-header {
+    font-size: large; /*修改了标题文字和按钮的大小*/
+	padding-top: 20rpx;
+	padding-bottom: 15rpx;
+    /* background-color: #605eac;
+	width: 100%;
+	border-radius: 5rpx;
+	box-sizing: content-box; */
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
 
 .item-text {
 	font-size: 22rpx;
@@ -200,11 +201,23 @@ page {
 }
 
 .setting-button {
-	width: 80%;
+	width: 90%;
 	margin-top: 30rpx;
 	margin-bottom: 30rpx;
-	background-color: white;
-	opacity: 0.6;
+	background-color: rgba(255, 255, 255, 0.8);
 	align-content: center;
+	border-radius: 20rpx;
+	/* border: 1rpx solid #3CC51F; */
+}
+
+.calendar::before {
+	position: absolute;
+	top: 0;
+	left: 10rpx;
+	height: 1500rpx;
+	width: 80rpx;
+	box-sizing: border-box;
+	background-color: rgba(255, 255, 255, 0.7);
+	z-index: 0;
 	border-radius: 20rpx;
 }

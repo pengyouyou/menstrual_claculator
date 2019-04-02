@@ -1,7 +1,58 @@
 /* pages/storageConsole/storageConsole.wxss */
 
-@import "../../style/guide.wxss";
+/* @import "../../style/guide.wxss"; */
 
-.black {
-  color: black;
+page {
+    background: #fcc;
+}
+
+.container-border {
+	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+
+	width: 90%;
+	padding: 20rpx 80rpx 50rpx;
+	box-sizing: border-box;
+	background-color: rgba(255, 255, 255, 0.5);
+	border-radius: 20rpx;
+}
+
+.setting-text {
+    color: black;
+    font-size: 30rpx;
+    padding: 50rpx 0rpx;
+}
+
+.setting-picker {
+    width: 480rpx;
+    padding: 0;
+    line-height: 110rpx;
+    font-size: 32rpx;
+    color: black;
+    /* border: 1px solid rgba(255, 0, 0, 1); */
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 12rpx;
+}
+
+.setting-input {
+    /* height: 100%; */
+	width: 480rpx;
+	text-align: center;
+	vertical-align: middle;
+	/* border: 1px solid rgba(0, 0, 0, 1); */
+}
+
+.setting-ok {
+	width: 480rpx;
+	margin-top: 60rpx;
+	margin-bottom: 30rpx;
+	background-color: rgba(255, 255, 255, 0.8);
+	align-content: center;
+	border-radius: 20rpx;
+	/* border: 1rpx solid #3CC51F; */
 }
