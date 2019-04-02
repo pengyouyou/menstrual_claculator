@@ -31,16 +31,19 @@ App({
 
     // 通过云函数获取用户 openid，支持回调或 Promise
     getUserOpenIdViaCloud() {
-        return wx.cloud.callFunction({
-            name: 'login',
-            data: {}
-        }).then(res => {
-            console.log('[云函数] [login] user openid: ', res.result.openid)
-            this.globalData.openid = res.result.openid
-            return res.result.openid
-        }).catch(err => {
-            console.error('[云函数] [login] 调用失败', err)
-        })
+		return new Promise((resolve, reject) => {
+			wx.cloud.callFunction({
+				name: 'login',
+				data: {}
+			}).then(res => {
+				console.log('[云函数] [login] user openid: ', res.result.openid)
+				this.globalData.openid = res.result.openid
+				resolve(res.result.openid)
+			}).catch(err => {
+				console.error('[云函数] [login] 调用失败', err)
+				reject(err)
+			})
+		})
     },
 
 	getMenstruationViaCloud () {
@@ -53,7 +56,7 @@ App({
 			// 查询当前用户所有的 menstruation
 			db.collection('menstruation').where({
 				_openid: this.globalData.openid
-			}).get().limit(1).then(res => {
+			}).get().then(res => {
 				// console.log(JSON.stringify(res.data, null, 2))
 				this.globalData.menstruation = res.data[0];
 

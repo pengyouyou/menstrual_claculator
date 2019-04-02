@@ -34,7 +34,21 @@ Page({
     },
 
     onLoad: function() {
-        app.getUserOpenIdViaCloud()
+        app.getUserOpenIdViaCloud().then(res => {
+			console.log('get openid ok')
+			wx.showLoading({
+				title: '',
+			})
+			app.getMenstruationViaCloud().then(res => {
+				console.log('get menstruation ok')
+				wx.hideLoading()
+				this.setPanel()
+			})
+			// .catch(err => {
+			// 	console.log('get menstruation failed')
+			// 	wx.hideLoading()
+			// })
+		})
 
         // 获取用户信息
         wx.getSetting({
@@ -68,6 +82,7 @@ Page({
                 });
             }
         }
+
         demo5_days_style.push({ month: 'current', day: 12, color: 'white', background: '#b49eeb' });
         demo5_days_style.push({ month: 'current', day: 17, color: 'white', background: '#f5a8f0' });
         demo5_days_style.push({ month: 'current', day: 20, color: 'white', background: '#aad4f5' });
@@ -75,14 +90,23 @@ Page({
 
         this.setData({
             days_color: demo5_days_style
-        });
+        })
+
     },
 
 	getDateDiff: function(startDate, endDate) {
-		var startTime = new Date(Date.parse(startDate.replace(/-/g, "/"))).getTime();
-		var endTime = new Date(Date.parse(endDate.replace(/-/g, "/"))).getTime();
+		// var startTime = new Date(Date.parse(startDate.replace(/-/g, "/"))).getTime();
+		// var endTime = new Date(Date.parse(endDate.replace(/-/g, "/"))).getTime();
+		var startTime = startDate.getTime();
+		var endTime = endDate.getTime();
 		var dates = Math.abs((startTime - endTime)) / (1000 * 60 * 60 * 24);
-		return  dates;
+		return Math.floor(dates);
+	},
+
+	setPanel: function () {
+		const days_count = new Date(this.data.year, this.data.month, 0).getDate()
+		var diff = this.getDateDiff(new Date(), app.globalData.menstruation.date)
+		console.log(days_count, diff)
 	},
 
     onGetUserInfo: function(e) {
