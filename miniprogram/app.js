@@ -56,17 +56,17 @@ App({
 			// 查询当前用户所有的 menstruation
 			db.collection('menstruation').where({
 				_openid: this.globalData.openid
-			}).get().then(res => {
+			}).orderBy('record_time', 'desc').limit(5).get().then(res => {
 				// console.log(JSON.stringify(res.data, null, 2))
 				this.globalData.menstruation = res.data[0];
 
 				console.log('[数据库] [查询记录] 成功: ', res);
 				resolve(res)
 			}).catch(err => {
-				wx.showToast({
-					icon: 'none',
-					title: '查询记录失败'
-				})
+				// wx.showToast({
+				// 	icon: 'none',
+				// 	title: '查询记录失败'
+				// })
 				console.error('[数据库] [查询记录] 失败：', err)
 				reject(err)
 			})
@@ -82,10 +82,12 @@ App({
 			}
 
 			const db = wx.cloud.database()
+			var datajson = this.globalData.menstruation
+			datajson.record_time = db.serverDate()
 			// 新增当前用户记录 menstruation
 			db.collection('menstruation').add({
 				// 注意：data 字段表示需新增的 JSON 数据
-				data: this.globalData.menstruation
+				data: datajson
 			}).then(res => {
 				console.log(res)
 

@@ -2,13 +2,14 @@
 
 const app = getApp()
 const config = require('../../config')
+const util = require('../../utils/util')
 
 Page({
 
 	onShareAppMessage() {
 		return {
-			title: '快来测测你的大姨妈安全期',
-			path: 'pages/storageConsole/storageConsole'
+			title: '不测测你怎么知道准不准，最懂你的姨妈安全期计算器',
+			path: 'pages/index/index'
 		}
 	},
 
@@ -22,10 +23,14 @@ Page({
 
 		date: "", // 上一次的日期，string
         cycle: 0, 	// 周期
-        duration: 0 // 持续时间
+        duration: 0, // 持续时间
+
+		_bak: null
     },
 
     onLoad: function(options) {
+		console.log('setting onLoad', app.globalData.menstruation)
+		this.data._bak = app.globalData.menstruation
 
 		let item = app.globalData.menstruation || {
 			date: new Date(),
@@ -39,8 +44,8 @@ Page({
             duration,
 		} = item
 
-		console.log(date, cycle, duration)
-		let datestr = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDay()}`
+		console.log(`in onLoad`, date, cycle, duration)
+		let datestr = util.formatDate(date, "yyyy-MM-dd")
 
         this.setData({
 			date: datestr,
@@ -74,13 +79,36 @@ Page({
 	},
 
 	onSettingOK: function() {
-
-		app.globalData.menstruation = {
-			date: new Date(this.data.date),
-			cycle: this.data.cycle,
-			duration: this.data.duration
+		console.log(`onSettingOK`, this.data.date)
+		// 检查是否有修改
+		var modify = true
+		var newdate = new Date(this.data.date)
+		if (this.data._bak)	{
+			var bak = this.data._bak
+			if (bak.cycle == this.data.cycle && bak.duration == this.data.duration) {
+				// 还是用年、月、日的数值比较，比字符串比较靠谱一点，毕竟选择器返回的字符串不可控
+				if (bak.date.getFullYear() == newdate.getFullYear() && 
+					bak.date.getMonth() == newdate.getMonth() && 
+					bak.date.getDate() == newdate.getDate()
+				) {
+					modify = false
+				}
+			}
 		}
-		app.setMenstruationViaCloud().catch()
+
+		if (modify) {
+			console.log(`has modify`)
+			app.globalData.menstruation = {
+				date: newdate,
+				cycle: this.data.cycle,
+				duration: this.data.duration
+			}
+			wx.showToast({
+				icon: 'loading',
+				title: '正在同步设置至云端'
+			})
+			app.setMenstruationViaCloud().catch()
+		}
 		wx.navigateBack()
 	}
 })
