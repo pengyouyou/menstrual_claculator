@@ -9,12 +9,22 @@ Page({
 		}
 	},
 
+    onShareTap() {
+        console.log('onShareTap')
+        return {
+            title: '我用这个算得又快又准，你也来试试！',
+            path: 'pages/index/index'
+        }
+    },
+
     data: {
         avatarUrl: './user-unlogin.png',
         userInfo: {},
         logged: false,
         takeSession: false,
         requestResult: '',
+
+        share_text: ">> 帮闺蜜也算算，去分享给她 <<",
 
 		info: [{
 				color: `#84e7d0`,

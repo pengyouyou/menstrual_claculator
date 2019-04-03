@@ -111,7 +111,7 @@ page {
 	height: 104rpx;
 	line-height: 104rpx;
 	margin-top: 30rpx;
-	margin-bottom: 30rpx;
+	/* margin-bottom: 30rpx; */
 	background-color: rgba(255, 255, 255, 0.8);
 	/* align-content: center; */
 	border-radius: 16rpx;
@@ -140,6 +140,39 @@ page {
 	font-size: 22rpx;
 	color: #333333;
 }
+
+.share-text {
+	font-size: 24rpx;
+	color: white;
+    margin-bottom: 30rpx;
+    border-bottom: 1px solid rgba(255, 255, 255, 1);
+    padding-bottom: 1rpx;
+    padding-top: 30rpx;
+}
+
+.share-btn {
+    /* width: 60%; */
+	font-size: 24rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+	color: white;
+    background-color: pink;
+    margin-bottom: 30rpx;
+    border-bottom: 1px solid white;
+    padding: 17rpx 0 1rpx;
+    border-radius: 0;
+    /* opacity: 0.1; */
+}
+
+.share-btn::after{
+    border-top: 0;
+    border-right: 0;
+    border-left: 0;
+    outline:none;
+    list-style: none;
+    box-shadow: none;
+}
+
 /* .calendar::before {
 	position: absolute;
 	top: 0;

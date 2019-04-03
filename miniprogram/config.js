@@ -40,7 +40,8 @@ const config = {
     downloadExampleUrl: `https://${host}/static/weapp.jpg`,
 
     // 云开发环境 ID
-    envId: 'test-df95c6',
+    // envId: 'test-df95c6',
+    envId: 'release-510f39',
 
     // 云开发-存储 示例文件的文件 ID
     demoImageFileId: 'cloud://release-b86096.7265-release-b86096/demo.jpg',
